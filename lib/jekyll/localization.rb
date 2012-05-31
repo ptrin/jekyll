@@ -283,11 +283,19 @@ module Jekyll
     # Returns the argument whose position corresponds to the current
     # language's position in the Localization::LANGUAGES array. If that
     # particular argument is missing, +default+ is returned.
+    
+    # def translate(*translations)
+    #   translate_lang(lang, *translations)
+    # end
+
+    # alias_method :t, :translate
+
     def translate(*translations)
-      translate_lang(lang, *translations)
+        translations[0][lang]
     end
 
     alias_method :t, :translate
+
 
     def translate_lang(lang, *translations)
       translations.flatten!
